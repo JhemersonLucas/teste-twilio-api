@@ -7,8 +7,8 @@ const cors = require('cors');
 app.use(cors())
 app.post('/sms', (req, res) => {
   const twiml = new MessagingResponse();
-
-  twiml.message('The Robots are coming! Head for the hills!');
+    console.log('recebido', req)
+  twiml.message('Mensagem recebida com sucesso! #Avante');
 
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
