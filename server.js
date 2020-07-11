@@ -15,7 +15,7 @@ app.post('/sms', (req, res) => {
 });
 
 
-app.post('/', (req, res) => {
+app.get('/', (req, res) => {
     return res.send('Olá mundao vei')
 });
 
