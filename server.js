@@ -19,6 +19,6 @@ app.get('/', (req, res) => {
     return res.send('Olá mundao vei')
 });
 
-http.createServer(app).listen(3333, () => {
-  console.log('Express server listening on port 3333');
+http.createServer(app).listen(process.env.PORT || 3333, () => {
+  console.log(`Express server listening on port ${process.env.PORT || 3333}`);
 });
