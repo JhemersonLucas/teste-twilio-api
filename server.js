@@ -1,8 +1,9 @@
 require('dotenv/config');
 const http = require('http');
 const express = require('express');
-const twilio = require('twilio')(process.env.TWILIO_ACCOUNT_SID,process.env.TWILIO_AUTH_TOKEN)
+const twilio = require('twilio');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
+
 
 const app = express();
 const cors = require('cors');
@@ -22,12 +23,23 @@ app.get('/', (req, res) => {
 
 app.get('/generatorCodeLogin', async (req, res) => {
   // send message whatsapp
-  await twilio.messages.create({
+  try{
+
+    const twilioClient = twilio(
+      process.env.TWILIO_ACCOUNT_SID,
+      process.env.TWILIO_AUTH_TOKEN
+    )
+    const response_twilio = await twilioClient.messages.create({
       from: 'whatsapp:+14155238886',
       to: 'whatsapp:+553399432780',
-      body: 'Olá, este é seu código de verificação: 1-2-3-4 \n\n badico.cloud'
-  });
-  return res.json({message: 'Message sent successfully'})
+      body: 'Olá, este é seu código de verificação: \n *1-2-3-4* \n\nbadico.cloud'
+    });
+    console.log(response_twilio);
+    return res.json({message: 'Message sent successfully'})
+  }catch(err){
+    console.log(err);
+    return res.json({message: 'error'})
+  }
 });
 
 
