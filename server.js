@@ -11,7 +11,7 @@ app.use(cors())
 app.post('/receiver', (req, res) => {
   const twiml = new MessagingResponse();
     console.log('recebido', req)
-  twiml.message('Mensagem recebida com sucesso! #Avante');
+  twiml.message('Código cancelado');
 
   res.writeHead(200, {'Content-Type': 'text/xml'});
   res.end(twiml.toString());
