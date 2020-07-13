@@ -20,14 +20,14 @@ app.get('/', (req, res) => {
     return res.send('Teste de API Twilio ;)')
 });
 
-app.get('/generatorCodeLogin', (req, res) => {
+app.get('/generatorCodeLogin', async (req, res) => {
   // send message whatsapp
-  twilio.messages.create({
+  await twilio.messages.create({
       from: 'whatsapp:+14155238886',
       to: 'whatsapp:+553399432780',
       body: 'Olá, este é seu código de verificação: 1-2-3-4 \n\n badico.cloud'
-  }).then(console.log).catch(console.error);
-  
+  });
+  return res.json({message: 'Message sent successfully'})
 });
 
 
