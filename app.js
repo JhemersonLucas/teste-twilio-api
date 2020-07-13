@@ -16,8 +16,8 @@ const twilioClient = twilio(
 // send message whatsapp
 twilioClient.messages.create({
     from: 'whatsapp:+14155238886',
-    to: 'whatsapp:+553399432780',
-    body: 'Teste'
+    to: 'whatsapp:+5533999200200',
+    body: 'Hello Leo (2)'
 }).then(console.log).catch(console.error);
 
 console.log(process.env.OWNER)
